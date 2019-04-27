@@ -8,6 +8,7 @@
 
 namespace Swoole\Laravel;
 
+use Illuminate\Http\Request;
 use Swoole\Http\Server;
 
 class HttpServer extends Server
@@ -92,7 +93,7 @@ class HttpServer extends Server
         $_POST = $swooleRequest->post ?? [];
 
         $response = $this->app->handle(
-            $request = Illuminate\Http\Request::capture()
+            $request = Request::capture()
         );
 
         $this->app->terminate($request, $response);
