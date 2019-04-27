@@ -87,8 +87,8 @@ class HttpServer extends Server
 
     public function onRequest(\swoole_http_request $swooleRequest, \swoole_http_response $swooleResponse)
     {
-        $_COOKIE = $swooleRequest->cookie;
-        $_SERVER = $swooleRequest->server;
+        $_COOKIE = $swooleRequest->cookie ?? [];
+        $_SERVER = $swooleRequest->server ?? [];
         $_GET = $swooleRequest->get ?? [];
         $_POST = $swooleRequest->post ?? [];
 
