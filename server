@@ -10,9 +10,19 @@
 
 error_reporting(E_ERROR);
 
-require __DIR__ . '/vendor/autoload.php';
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    if (file_exists($file)) {
+        require $file;
+        break;
+    }
+}
 
-$app = require_once __DIR__ . '/bootstrap/app.php';
+foreach (array(__DIR__ . '/../../../bootstrap/app.php', __DIR__ . '/../../bootstrap/app.php', __DIR__ . '/bootstrap/app.php') as $file) {
+    if (file_exists($file)) {
+        $app = require_once $file;
+        break;
+    }
+}
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
