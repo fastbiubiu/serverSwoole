@@ -1,0 +1,35 @@
+{
+    "name": "swoole/laravel",
+    "description": "server swoole laravel",
+    "keywords": ["swoole", "laravel"],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "dunkebiao",
+            "email": "dunkebiao@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-json": "*",
+        "ext-swoole": "*"
+    },
+    "require-dev": {
+        "swoole/ide-helper": "~4.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Swoole\\Laravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "server"
+    ],
+    "minimum-stability": "stable"
+}
