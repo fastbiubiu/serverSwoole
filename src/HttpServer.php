@@ -8,7 +8,9 @@
 
 namespace Swoole\Laravel;
 
-class HttpServer extends \Swoole\Http\Server
+use Swoole\Http\Server;
+
+class HttpServer extends Server
 {
     protected $app;
 
@@ -42,47 +44,47 @@ class HttpServer extends \Swoole\Http\Server
         echo 'start' . "\n";
     }
 
-    public function onShutdown(swoole_server $server)
+    public function onShutdown(\swoole_server $server)
     {
         echo 'Shutdown' . "\n";
     }
 
-    public function onManagerStart(swoole_server $serv)
+    public function onManagerStart(\swoole_server $serv)
     {
         echo 'ManagerStart' . "\n";
     }
 
-    public function onManagerStop(swoole_server $serv)
+    public function onManagerStop(\swoole_server $serv)
     {
         echo 'ManagerStop' . "\n";
     }
 
-    public function onWorkerStart(swoole_server $server, int $worker_id)
+    public function onWorkerStart(\swoole_server $server, int $worker_id)
     {
         echo 'WorkerStart' . "\n";
     }
 
-    public function onWorkerStop(swoole_server $server, int $worker_id)
+    public function onWorkerStop(\swoole_server $server, int $worker_id)
     {
         echo 'WorkerStop' . "\n";
     }
 
-    public function onWorkerError(swoole_server $serv, int $worker_id, int $worker_pid, int $exit_code, int $signal)
+    public function onWorkerError(\swoole_server $serv, int $worker_id, int $worker_pid, int $exit_code, int $signal)
     {
         echo 'WorkerError' . "\n";
     }
 
-    public function onPipeMessage(swoole_server $server, int $src_worker_id, mixed $message)
+    public function onPipeMessage(\swoole_server $server, int $src_worker_id, mixed $message)
     {
         echo 'PipeMessage' . "\n";
     }
 
-    public function onReceive(swoole_server $server, int $fd, int $reactor_id, string $data)
+    public function onReceive(\swoole_server $server, int $fd, int $reactor_id, string $data)
     {
         echo 'Receive' . "\n";
     }
 
-    public function onRequest(swoole_http_request $swooleRequest, swoole_http_response $swooleResponse)
+    public function onRequest(\swoole_http_request $swooleRequest, \swoole_http_response $swooleResponse)
     {
         $_COOKIE = $swooleRequest->cookie;
         $_SERVER = $swooleRequest->server;
